@@ -1,5 +1,7 @@
 package com.sathish.weathervoicereco.view.utils
 
+import android.content.Context
+
 /*
  * Project Name : WeatherVoiceRecognizer
  * Created by : SATHISH KUMAR R
@@ -11,6 +13,8 @@ package com.sathish.weathervoicereco.view.utils
  */
 
 class CommonUtils {
+
+
 
 
 }

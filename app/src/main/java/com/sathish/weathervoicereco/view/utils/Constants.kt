@@ -12,9 +12,11 @@ import com.sathish.weathervoicereco.view.utils.permissionhelper.PermissionUtils
  * Module Name : app
  * Desc : 
  */
-class Constants {
+object Constants {
 
-    
+    const  val   CITY : String = "Berlin"
+    const val  UNIT : String = "metric"
+
 
 
 }
