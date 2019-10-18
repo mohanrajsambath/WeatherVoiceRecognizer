@@ -92,6 +92,7 @@ class VoiceActivity : AppCompatActivity() {
                 txtView_humidity_temp.text = mHumidity
 
                 layoutCons_weather.visibility = View.VISIBLE
+                TxtView_speak.visibility = View.GONE
 
                 }
 
