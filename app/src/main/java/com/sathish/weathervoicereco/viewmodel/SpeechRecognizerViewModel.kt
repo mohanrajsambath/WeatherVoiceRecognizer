@@ -72,6 +72,7 @@ class SpeechRecognizerViewModel(application: Application) : AndroidViewModel(app
     }
 
     fun checkAudioRecordingPermission(context: Application) =
+
         ContextCompat.checkSelfPermission(context,
             PermissionUtils.Mainfest_RECORD_AUDIO
         ) == PackageManager.PERMISSION_GRANTED

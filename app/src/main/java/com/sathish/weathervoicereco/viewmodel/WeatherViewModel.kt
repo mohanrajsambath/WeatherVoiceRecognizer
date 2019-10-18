@@ -30,12 +30,18 @@ class WeatherViewModel : ViewModel() {
      var mWeatherStatusViewModel : MutableLiveData<WeatheInfoModel> = MutableLiveData()
 
 
-    fun CallWeatherService(mActivity : VoiceActivity){
+    fun test(x:Int):Int{
+        return 10+x
+    }
+
+
+    fun CallWeatherService(mActivity : VoiceActivity, mCityName : String){
 
         val apiservice : RetrofitInterface = RetrofitClient.getClient.create(RetrofitInterface::class.java)
-        val result = apiservice.getWeatherInfo(Constants.CITY,Constants.UNIT,BuildConfig.API_KEY)
+        val result = apiservice.getWeatherInfo(mCityName,Constants.UNIT,BuildConfig.API_KEY)
 
         result.enqueue(object : Callback,retrofit2.Callback<WeatheInfoModel>{
+
             override fun onFailure(call: Call<WeatheInfoModel>, t: Throwable) {
                 AppLog.e("Error ", t.toString())
                 Toast.makeText(mActivity,t.toString(),Toast.LENGTH_SHORT).show()

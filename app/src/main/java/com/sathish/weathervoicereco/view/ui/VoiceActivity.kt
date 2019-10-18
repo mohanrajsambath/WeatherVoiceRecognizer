@@ -20,9 +20,6 @@ import kotlin.collections.ArrayList
 import android.text.InputType
 
 
-
-
-
 /*
  *
  * Project Name : WeatherVoiceRecognizer
@@ -32,7 +29,7 @@ import android.text.InputType
  * File Name : VoiceActivity.kt
  * ClassName : VoiceActivity
  * Module Name : app
- * Desc :
+ * Desc : Voice Activity Listen to user input  and show  weather report
  */
 
 
@@ -52,48 +49,56 @@ class VoiceActivity : AppCompatActivity() {
         initView()
         setUpSpeechViewModel()
         setUpWeatherViewModel()
-        mWeatherViewModel.CallWeatherService(getActivityContext!!)
+
 
     }
 
+    // setUpWeatherViewModel() initialize  view model of weather
     private fun setUpWeatherViewModel() {
         mWeatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
 
         mWeatherViewModel.mWeatherStatusViewModel.observe(this, Observer {
 
             val response = mWeatherViewModel.mWeatherStatusViewModel.value
+            if( response != null) {
 
-            val mCity = response!!.name + "," + " " + response.sys.country
-            val mCloudStatus = response.weather as ArrayList<Weather>
-            val mTemp = response.main.temp
-            val mMintemp = "Min Temp: " + response.main.tempMin
-            val mMaxtemp = "Max Temp: " + response.main.tempMax
-            val mSunriseTime = response.sys.sunrise.toLong()
-            val mSunsetTime = response.sys.sunset.toLong()
-            val mWindTemp = response.wind.speed.toString()
-            val mPressureTemp = response.main.pressure.toString()
-            val mHumidity = response.main.humidity.toString()
+                val mCity = response.name + "," + " " + response.sys.country
+                val mCloudStatus = response.weather as ArrayList<Weather>
+                val mTemp = response.main.temp
+                val mMintemp = "Min Temp: " + response.main.tempMin
+                val mMaxtemp = "Max Temp: " + response.main.tempMax
+                val mSunriseTime = response.sys.sunrise.toLong()
+                val mSunsetTime = response.sys.sunset.toLong()
+                val mWindTemp = response.wind.speed.toString()
+                val mPressureTemp = response.main.pressure.toString()
+                val mHumidity = response.main.humidity.toString()
 
-            txtView_City.text = mCity
-            txtView_Date.text =getCurrentDate
-            if(mCloudStatus.size>0){
+                txtView_City.text = mCity
+                txtView_Date.text = getCurrentDate
+                if (mCloudStatus.size > 0) {
 
-                txtView_ClearStatus.setText(mCloudStatus[0].description.capitalize())
+                    txtView_ClearStatus.setText(mCloudStatus[0].description.capitalize())
 
-            }
-            txtView_temp.text = mTemp.toString() + "°C"
-            txtView_temp_min.text = mMintemp + "°C"
-            txtView_temp_max.text = mMaxtemp + "°C"
-            txtView_sunrisetime.text =SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(mSunriseTime*1000))
-            txtView_sunsetime.text = SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(mSunsetTime*1000))
-            txtView_windTemp.text = mWindTemp
-            txtView_pressure_temp.text = mPressureTemp
-            txtView_humidity_temp.text = mHumidity
+                }
+                txtView_temp.text = mTemp.toString() + "°C"
+                txtView_temp_min.text = mMintemp + "°C"
+                txtView_temp_max.text = mMaxtemp + "°C"
+                txtView_sunrisetime.text =
+                    SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(mSunriseTime * 1000))
+                txtView_sunsetime.text =
+                    SimpleDateFormat("hh:mm a", Locale.ENGLISH).format(Date(mSunsetTime * 1000))
+                txtView_windTemp.text = mWindTemp
+                txtView_pressure_temp.text = mPressureTemp
+                txtView_humidity_temp.text = mHumidity
+
+                layoutCons_weather.visibility = View.VISIBLE
+
+                }
 
         })
     }
 
-
+//Current Date and Time
     val getCurrentDate: String
         get() {
             val currentTime = Calendar.getInstance().getTime()
@@ -102,7 +107,7 @@ class VoiceActivity : AppCompatActivity() {
             return currentDateandTime
         }
 
-
+    // setUpSpeechViewModel() initialize  view model of Voice speecher
     private fun setUpSpeechViewModel() {
 
         mSpeechRecognizerViewModel =
@@ -111,10 +116,8 @@ class VoiceActivity : AppCompatActivity() {
             .observe(this, Observer<SpeechRecognizerViewModel.ViewState> { viewState ->
                 render(viewState)
                 if (txtView_tittle.text != null) {
-                    if (txtView_tittle.text.isNotEmpty() && txtView_tittle.text.toString().equals("Berlin weather")) {
-                        layoutCons_weather.visibility = View.VISIBLE
+                        mWeatherViewModel.CallWeatherService(getActivityContext!!,txtView_tittle.text.toString())
 
-                    }
                 }
 
             })
@@ -125,15 +128,16 @@ class VoiceActivity : AppCompatActivity() {
         if (uiOutput == null) return
         txtView_tittle!!.text = uiOutput.spokenText
 
-
     }
 
+    // view casting
     private fun initView() {
 
         btn_Mic.setOnClickListener(micClickListener)
 
     }
 
+    // onClickListenter
     private val micClickListener = View.OnClickListener {
         if (!mSpeechRecognizerViewModel.permissionToRecordAudio) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSION_KEY)
@@ -147,7 +151,7 @@ class VoiceActivity : AppCompatActivity() {
         }
     }
 
-
+    // Request Permission
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -168,9 +172,11 @@ class VoiceActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
     }
+
     override fun onStop() {
         super.onStop()
     }
+
     override fun onDestroy() {
         super.onDestroy()
     }
