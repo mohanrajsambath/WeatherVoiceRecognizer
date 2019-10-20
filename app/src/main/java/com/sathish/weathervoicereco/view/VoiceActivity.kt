@@ -1,4 +1,4 @@
-package com.sathish.weathervoicereco.view.ui
+package com.sathish.weathervoicereco.view
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -8,8 +8,8 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.sathish.weathervoicereco.R
-import com.sathish.weathervoicereco.service.model.Weather
-import com.sathish.weathervoicereco.view.utils.permissionhelper.PermissionUtils
+import com.sathish.weathervoicereco.model.Weather
+import com.sathish.weathervoicereco.utils.permissionhelper.PermissionUtils
 import com.sathish.weathervoicereco.viewmodel.SpeechRecognizerViewModel
 import com.sathish.weathervoicereco.viewmodel.WeatherViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_weatherinfo.*
 import java.util.*
 import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
-import android.text.InputType
+
 
 
 /*

@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -62,10 +65,13 @@ android {
     }
 
 
+
+
     packagingOptions {
         exclude 'LICENSE.txt'
     }
 }
+
 
 
 dependencies {
@@ -82,6 +88,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.19.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+
     // supporting Libraries
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
@@ -90,5 +97,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation 'com.squareup.retrofit2:converter-jackson:2.6.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+
+
+
+
 
 }

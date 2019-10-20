@@ -1,6 +1,6 @@
-package com.sathish.weathervoicereco.service.rest
+package com.sathish.weathervoicereco.remote.repository
 
-import com.sathish.weathervoicereco.service.model.WeatheInfoModel
+import com.sathish.weathervoicereco.model.WeatheInfoModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

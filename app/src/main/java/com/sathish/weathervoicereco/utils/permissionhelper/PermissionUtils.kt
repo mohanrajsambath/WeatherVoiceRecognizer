@@ -1,4 +1,4 @@
-package com.sathish.weathervoicereco.view.utils.permissionhelper
+package com.sathish.weathervoicereco.utils.permissionhelper
 
 import android.Manifest
 

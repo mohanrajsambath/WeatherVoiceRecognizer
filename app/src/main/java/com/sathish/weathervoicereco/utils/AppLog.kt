@@ -1,4 +1,4 @@
-package com.sathish.weathervoicereco.view.utils
+package com.sathish.weathervoicereco.utils
 
 import android.util.Log
 import com.sathish.weathervoicereco.BuildConfig

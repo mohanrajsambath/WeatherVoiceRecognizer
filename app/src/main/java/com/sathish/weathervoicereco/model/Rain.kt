@@ -1,4 +1,4 @@
-package com.sathish.weathervoicereco.service.model
+package com.sathish.weathervoicereco.model
 
 
 import com.google.gson.annotations.SerializedName

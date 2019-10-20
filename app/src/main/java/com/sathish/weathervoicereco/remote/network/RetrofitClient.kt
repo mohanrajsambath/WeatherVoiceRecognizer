@@ -1,4 +1,4 @@
-package com.sathish.weathervoicereco.service.rest
+package com.sathish.weathervoicereco.remote.network
 
 import com.sathish.weathervoicereco.BuildConfig
 import okhttp3.OkHttpClient
@@ -25,8 +25,10 @@ class RetrofitClient {
 
         val getClient: Retrofit
             get() {
-                if(retrofit==null){
-                    retrofit = Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(okhttpClient)
+                if(retrofit ==null){
+                    retrofit = Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(
+                        okhttpClient
+                    )
                         .addConverterFactory(GsonConverterFactory.create()).build()
                 }
                 return retrofit!!

@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".view.ui.VoiceActivity"
+            android:name=".view.VoiceActivity"
             android:exported="true"
             android:noHistory="true"
             android:screenOrientation="portrait">

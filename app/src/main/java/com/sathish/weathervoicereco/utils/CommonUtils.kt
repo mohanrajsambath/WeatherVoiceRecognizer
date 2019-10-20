@@ -1,6 +1,4 @@
-package com.sathish.weathervoicereco.view.utils
-
-import android.content.Context
+package com.sathish.weathervoicereco.utils
 
 /*
  * Project Name : WeatherVoiceRecognizer

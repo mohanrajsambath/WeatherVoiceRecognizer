@@ -1,6 +1,4 @@
-package com.sathish.weathervoicereco.view.utils
-
-import com.sathish.weathervoicereco.view.utils.permissionhelper.PermissionUtils
+package com.sathish.weathervoicereco.utils
 
 /*
  * Project Name : WeatherVoiceRecognizer

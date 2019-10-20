@@ -1,9 +1,9 @@
-package com.sathish.weathervoicereco.service.model
+package com.sathish.weathervoicereco.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class WeatheInfoModel(
+data  class WeatheInfoModel(
     @SerializedName("base")
     val base: String = "", // stations
     @SerializedName("clouds")

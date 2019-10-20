@@ -11,8 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.sathish.weathervoicereco.view.utils.permissionhelper.PermissionUtils
+import com.sathish.weathervoicereco.utils.permissionhelper.PermissionUtils
 import java.util.*
 
 /*
@@ -55,7 +54,10 @@ class SpeechRecognizerViewModel(application: Application) : AndroidViewModel(app
         mSpeechRecognizer.startListening(recognizerIntent)
         notifyListening(isRecording = true)
     }
-
+    /**
+     * @author R Sathish Kumar
+     *
+     */
     fun stopListening() {
         mSpeechRecognizer.stopListening()
         notifyListening(isRecording = false)
@@ -90,7 +92,6 @@ class SpeechRecognizerViewModel(application: Application) : AndroidViewModel(app
             viewState = MutableLiveData()
             viewState?.value = initViewState()
         }
-
         return viewState as MutableLiveData<ViewState>
     }
 
