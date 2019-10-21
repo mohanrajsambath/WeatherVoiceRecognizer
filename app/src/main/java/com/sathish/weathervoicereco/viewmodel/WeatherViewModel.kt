@@ -42,12 +42,16 @@ class WeatherViewModel : ViewModel() {
         result.enqueue(object : Callback, retrofit2.Callback<WeatheInfoModel> {
 
             override fun onFailure(call: Call<WeatheInfoModel>, t: Throwable) {
-                getFailedStatus(mActivity, t)
+             getFailedStatus(mActivity, t)
+               /* AppLog.e("Error ", t.toString())
+                Toast.makeText(mActivity, t.toString(), Toast.LENGTH_SHORT).show()*/
             }
 
-            override fun onResponse(call: Call<WeatheInfoModel>,response: Response<WeatheInfoModel>
-            ) {
-                getSuccessStatus(response)
+            override fun onResponse(call: Call<WeatheInfoModel>,response: Response<WeatheInfoModel>) {
+               getSuccessStatus(response)
+               /* if (response.isSuccessful) {
+                    mWeatherStatusViewModel.value = response.body()
+                }*/
             }
 
         })

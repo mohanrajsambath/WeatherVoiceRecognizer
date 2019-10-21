@@ -12,7 +12,6 @@ package com.sathish.weathervoicereco.utils
  */
 object Constants {
 
-    const  val   CITY : String = "Berlin"
     const val  UNIT : String = "metric"
 
 

@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * 
  */
 
-class RetrofitClient {
+class RetrofitClient  {
 
     companion object {
 
